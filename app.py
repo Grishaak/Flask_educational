@@ -10,40 +10,41 @@ cats = ['Русская голубая', 'Корниш-рекс',
         'Манчкин']
 count = 0
 
-@app.route('/hello')
-def hello():
-    return '<h1>Начало новой жизни для всех.</h1>'
+
+@app.route('/hello/<string:username>')
+def hello(username):
+    return f'Привет тебе дорогой {username}'
 
 
-@app.route('/cars')
-def cars_list():
-    return f'<h2>Cars :{cars}</h2>'
+@app.route('/even/<int:number>')
+def even_odd(number: any):
+    if isinstance(number, int):
+        return f'Это число {"не четное" if number % 2 else "четное"}'
+    return f'Это не число ты ввел, друг.'
 
 
-@app.route('/cats')
-def cats_list():
-    choice = random.choice(cats)
-    return f'<h2>Cat :{choice}</h2>'
+@app.route('/compare/<int:number>/<int:number_2>')
+def compare(number: int, number_2: int):
+    if number > number_2:
+        res = '>'
+    if number < number_2:
+        res = '<'
+    else:
+        res = '=='
+    return f"Результат: {number} {res} {number_2}"
 
 
-@app.route('/time/now')
-def time():
-    cur_time = datetime.datetime.now().strftime('Time: %H:%M:%S')
-    return f'<h2>Current time :{cur_time}</h2>'
+@app.route('/hello-world/<string:name>')
+def hello_world(name: str):
+    from datetime import datetime
+    weekday = datetime.now().strftime("%A")
+    return f"Hello, {name}, today is {weekday}"
 
 
-@app.route('/time/future')
-def time_future():
-    cur_time = datetime.timedelta(hours=datetime.datetime.now().hour + 1, minutes=datetime.datetime.now().minute,
-                                  seconds=datetime.datetime.now().second)
-    return f'<h2>Future time :{cur_time}</h2>'
-
-
-@app.route('/counter')
-def count_sh():
-    global count
-    count += 1
-    return f'<h2>Future time :{count}</h2>'
+@app.route('/max-number/<path:numbers>')
+def max_number(numbers: str):
+    maximum = max(list(map(lambda x: int(x), numbers.split('/'))))
+    return f"Максимальное из всех чисел: <b>{maximum}</b>"
 
 
 if __name__ == "__main__":
