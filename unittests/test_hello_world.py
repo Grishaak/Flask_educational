@@ -1,6 +1,6 @@
 import unittest
 
-from app import hello_world, max_number, app
+from apps.app import app
 
 
 class TestRouteHelloFlask(unittest.TestCase):
