@@ -1,7 +1,5 @@
-import datetime
-import random
-
 import flask
+from flask import request
 
 app = flask.Flask(__name__)
 cars = ['Chevrolet', 'Renault', 'Ford', "Mercedes", 'BMW']
@@ -45,7 +43,3 @@ def hello_world(name: str):
 def max_number(numbers: str):
     maximum = max(list(map(lambda x: int(x), numbers.split('/'))))
     return f"Максимальное из всех чисел: <b>{maximum}</b>"
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
