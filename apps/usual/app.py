@@ -3,9 +3,6 @@ from urllib.parse import unquote_plus
 
 import flask
 from flask import request
-from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
-
 app = flask.Flask(__name__)
 
 

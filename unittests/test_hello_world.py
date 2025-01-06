@@ -1,6 +1,6 @@
 import unittest
 
-from apps.app import app
+from apps.usual.app import app
 
 
 class TestRouteHelloFlask(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from apps.app_wtf import app
+from apps.usual.app_wtf import app
 
 
 class TestEndpointPostRequest(unittest.TestCase):
